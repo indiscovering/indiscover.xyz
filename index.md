@@ -25,13 +25,13 @@ avatar-url: "https://indiscover.me/assets/img/avatar.png"
     <h3>▸ for me, it's currently: ◂</h3>
     <h4 id="gmt-time"></h4>
 
-    <script>
+<script>
   function getOrdinalSuffix(n) {
     if (n > 3 && n < 21) return 'th';
     switch (n % 10) {
-      case 1:  return 'st';
-      case 2:  return 'nd';
-      case 3:  return 'rd';
+      case 1: return 'st';
+      case 2: return 'nd';
+      case 3: return 'rd';
       default: return 'th';
     }
   }
@@ -39,11 +39,10 @@ avatar-url: "https://indiscover.me/assets/img/avatar.png"
   function updateUKDateTime() {
     const currentDate = new Date();
 
-    const options = { timeZone: 'Europe/London', weekday: 'long', month: 'long' };
     const day = currentDate.toLocaleDateString('en-GB', { day: 'numeric', timeZone: 'Europe/London' });
     const suffix = getOrdinalSuffix(parseInt(day));
-    const weekday = currentDate.toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'Europe/London' });
-    const month = currentDate.toLocaleDateString('en-GB', { month: 'long', timeZone: 'Europe/London' });
+    const weekday = currentDate.toLocaleDateString('en-GB', { weekday: 'long', timeZone: 'Europe/London' }).toLowerCase();
+    const month = currentDate.toLocaleDateString('en-GB', { month: 'long', timeZone: 'Europe/London' }).toLowerCase();
 
     const time = currentDate.toLocaleTimeString('en-GB', {
       timeZone: 'Europe/London',
@@ -53,7 +52,7 @@ avatar-url: "https://indiscover.me/assets/img/avatar.png"
       hour12: false
     });
 
-    const formatted = `${weekday}, ${day}${suffix} of ${month} ${time}`;
+    const formatted = `${weekday}, the ${day}${suffix} of ${month} – ${time}`.toLowerCase();
     document.getElementById("gmt-time").textContent = formatted;
   }
 
