@@ -1,6 +1,6 @@
 ---
 avatar-name: "dyl's page"
-avatar-url: "https://indiscover.me/assets/img/avatar.png"
+avatar-url: "https://indiscover.xyz/assets/img/avatar.png"
 ---
 <p>⠀</p>
 
