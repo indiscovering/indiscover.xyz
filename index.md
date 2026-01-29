@@ -4,10 +4,6 @@ avatar-url: "https://indiscover.xyz/assets/img/avatar.png"
 ---
 <p>⠀</p>
 
-<h3>▸ i'm dyl, also known by the usernames "indiscover" and "horizoned" online ◂</h3>
-
-<p>⠀</p>
-
 <h3>▸ eighteen - he / him ◂</h3>
 
 <p>⠀</p>
