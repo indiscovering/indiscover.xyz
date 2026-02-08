@@ -2,8 +2,6 @@
 avatar-name: "dyl's page"
 avatar-url: "https://indiscover.xyz/assets/img/avatar.png"
 ---
-<p>⠀</p>
-
 <h3>▸ eighteen - he / him ◂</h3>
 
 <p>⠀</p>
