@@ -1,0 +1,19 @@
+- version: v2.2
+  title: visual polish
+  changes:
+    - monochrome pixel icons
+    - ascii loading indicators
+    - hardware file tree
+    - custom 404 and changelog
+- version: v2.1
+  title: atmosphere
+  changes:
+    - snow, rain, stars and fish
+    - saved background preferences
+    - lowercase listening activity
+- version: v2.0
+  title: foundation
+  changes:
+    - terminal-inspired redesign
+    - live spotify activity
+    - native guestbook and moderation

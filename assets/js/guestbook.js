@@ -103,6 +103,12 @@
   async function loadEntries() {
     if (loadingEntries) return;
     loadingEntries = true;
+    if (!entries.querySelector(".guestbook-entry")) {
+      const spinner = document.createElement("span");
+      spinner.className = "ascii-loader";
+      spinner.setAttribute("aria-hidden", "true");
+      entries.replaceChildren(spinner, document.createTextNode(" loading..."));
+    }
     try {
       const response = await fetch(endpoint, {cache: "no-store", signal: AbortSignal.timeout(12000)});
       if (!response.ok) throw new Error();

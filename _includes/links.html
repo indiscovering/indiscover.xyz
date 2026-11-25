@@ -8,7 +8,7 @@
       {% else %}
       <a href="{{ item.url }}">
       {% endif %}
-        <span class="glyph" aria-hidden="true">{% case item.icon %}{% when 'music-player-fill' or 'music-note-beamed' %}[~]{% when 'book' %}[=]{% when 'envelope' %}[@]{% when 'pc-display' %}[#]{% when 'github' %}[+]{% else %}[&gt;]{% endcase %}</span>
+        <svg class="pixel-icon" aria-hidden="true" viewBox="0 0 10 10"><use href="{{ '/assets/icons/pixels.svg' | relative_url }}#{{ item.icon | strip }}"></use></svg>
         <span>{{ item.text }}</span>
         <span class="arrow" aria-hidden="true">{% if item.url == "#" %}+{% else %}↗{% endif %}</span>
       {% if item.url == "#" %}</button>{% else %}</a>{% endif %}
@@ -26,25 +26,33 @@
         <h2>~/guestbook</h2>
         {% include guestbook.html %}
         {% elsif item.text == "about me" %}
-        <h2>about me</h2>
+        <h2>~/about</h2>
         <p>placeholder</p>
         {% elsif item.text == "email" %}
-        <h2>contact me:</h2>
+        <h2>~/contact</h2>
         <p>you can reach me at my forward address: <a href="mailto:dyl@indiscover.xyz">dyl@indiscover.xyz</a></p>
-        <p>you will most likely recieve the fastest reply here, as it goes to a mailbox i check more often</p>
+        <p>you will most likely receive the fastest reply here, as it goes to a mailbox i check more often</p>
         <p>or alternatively, you can send a message directly to my protonmail: <a href="mailto:indiscovering@proton.me">indiscovering@proton.me</a></p>
-        <p>if you send an email to my forward address, this is the email address you will recieve a reply from. this is simply for privacy as to not share my main email address.</p>
+        <p>if you send an email to my forward address, this is the email address you will receive a reply from. this is simply for privacy as to not share my main email address.</p>
         <p>i check this mailbox less often, so you may have to wait a while for a response</p>
         {% elsif item.text == "pc specs" %}
         <h2>~/specs</h2>
-        <p>cpu - intel core i5-12400f</p>
-        <p>ram - 32gb of corsair vengeance rgb pro, ddr4</p>
-        <p>gpu - zotac gaming rtx 4060, 8gb vram</p>
-        <p>mobo - asus prime h610m-a wifi d4</p>
-        <p>psu - corsair cv550</p>
-        <p>monitor - 32 inch AOC CQ32G4VE running at 1440p and 180hz </p>
-        <p>keyboard - corsair k70 pro rgb tkl</p>
-        <p>mouse - razer basilisk v3 pro, 1300dpi</p>
+        <div class="spec-tree">
+          <div class="tree-root">hardware/</div>
+          <ul>
+            <li>cpu: intel core i5-12400f</li>
+            <li>ram: 32gb corsair vengeance rgb pro, ddr4</li>
+            <li>gpu: zotac gaming rtx 4060, 8gb vram</li>
+            <li>mobo: asus prime h610m-a wifi d4</li>
+            <li>psu: corsair cv550</li>
+          </ul>
+          <div class="tree-root">peripherals/</div>
+          <ul>
+            <li>monitor: 32 inch aoc cq32g4ve, 1440p / 180hz</li>
+            <li>keyboard: corsair k70 pro rgb tkl</li>
+            <li>mouse: razer basilisk v3 pro, 1300dpi</li>
+          </ul>
+        </div>
         {% endif %}
     </div>
 </dialog>
