@@ -56,6 +56,7 @@
   function renderDiscord(activity) {
     lastPlayedAt = null;
     title.textContent = "discord / now playing";
+    delete title.dataset.presence;
     source.href = "https://discord.com/users/345581101302939648";
     source.textContent = "discord ↗";
     game.textContent = activity.name.toLowerCase();
@@ -85,6 +86,7 @@
     const hasGame = available && typeof data.title === "string" && data.title.trim();
     const presence = ["online","offline","busy","away","snooze","looking to trade","looking to play"].includes(data.presence) ? data.presence : "unknown";
     title.textContent = "steam / " + (available ? presence : "unavailable");
+    title.dataset.presence = available ? presence : "unavailable";
     game.replaceChildren();
     const appid = String(data.appid ?? "");
     if (hasGame && /^\d+$/.test(appid)) {
