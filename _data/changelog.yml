@@ -2,7 +2,7 @@
   title: desktop and gaming
   changes:
     - windowed desktop layout
-    - live steam activity and playtime
+    - live steam activity, presence and last played timestamps
     - live discord presence
     - non-steam gaming activity and session timer
 - version: v2.2

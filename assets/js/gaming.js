@@ -10,7 +10,7 @@
   const validMinutes = n => typeof n === "number" && Number.isFinite(n) && n >= 0;
   const hours = n => (n / 60).toLocaleString("en-GB", {minimumFractionDigits:1, maximumFractionDigits:1}) + " hrs";
 
-  let steam = null, discord = null, sessionStart = null;
+  let steam = null, discord = null, sessionStart = null, lastPlayedAt = null;
   const source = document.getElementById("gaming-source");
   const fallback = document.getElementById("gaming-fallback");
   const session = document.getElementById("gaming-session");
@@ -35,7 +35,17 @@
     if (url && icon.getAttribute("src") !== url) icon.src = url;
     if (url && icon.complete && !icon.naturalWidth) { icon.hidden = true; fallback.hidden = false; }
   }
+  function relativeTime(timestamp) {
+    const minutes = Math.max(0, Math.floor((Date.now() - timestamp) / 60000));
+    if (minutes === 0) return "last played just now";
+    if (minutes < 60) return "last played " + minutes + (minutes === 1 ? " min ago" : " mins ago");
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return "last played " + hours + (hours === 1 ? " hour ago" : " hours ago");
+    const days = Math.floor(hours / 24);
+    return "last played " + days + (days === 1 ? " day ago" : " days ago");
+  }
   function tickSession() {
+    if (!document.hidden && lastPlayedAt !== null) status.textContent = relativeTime(lastPlayedAt);
     if (!sessionStart || document.hidden) return;
     const seconds = Math.max(0, Math.floor((Date.now() - sessionStart) / 1000));
     const h = Math.floor(seconds / 3600);
@@ -44,11 +54,12 @@
     session.textContent = h + "h " + String(m).padStart(2,"0") + "m " + String(s).padStart(2,"0") + "s";
   }
   function renderDiscord(activity) {
+    lastPlayedAt = null;
     title.textContent = "discord / now playing";
     source.href = "https://discord.com/users/345581101302939648";
     source.textContent = "discord ↗";
     game.textContent = activity.name.toLowerCase();
-    status.textContent = "● currently in-game";
+    status.textContent = "● currently playing";
     status.classList.add("playing");
     showIcon(discordIcon(activity));
     totalRow.hidden = true;
@@ -72,7 +83,8 @@
     const playing = data.status === "playing";
     const available = data.status !== "unavailable";
     const hasGame = available && typeof data.title === "string" && data.title.trim();
-    title.textContent = "steam / " + (playing ? "now playing" : hasGame ? "recently played" : "activity");
+    const presence = ["online","offline","busy","away","snooze","looking to trade","looking to play"].includes(data.presence) ? data.presence : "unknown";
+    title.textContent = "steam / " + (available ? presence : "unavailable");
     game.replaceChildren();
     const appid = String(data.appid ?? "");
     if (hasGame && /^\d+$/.test(appid)) {
@@ -85,8 +97,8 @@
     }
     const validIcon = hasGame && /^\d+$/.test(appid) && typeof data.icon === "string" && data.icon.startsWith("https://media.steampowered.com/steamcommunity/public/images/apps/" + appid + "/") && /^[a-f0-9]{40}\.jpg$/i.test(data.icon.split("/").pop());
     showIcon(validIcon ? data.icon : null);
-    const presence = ["online","offline","busy","away","snooze","looking to trade","looking to play"].includes(data.presence) ? data.presence : "unknown";
-    status.textContent = playing ? "● currently in-game" : !available ? "status unavailable" : presence === "offline" ? "○ offline on steam" : presence === "unknown" ? "status unknown" : "● " + presence + " on steam";
+    lastPlayedAt = !playing && hasGame && typeof data.lastPlayedAt === "number" && Number.isFinite(data.lastPlayedAt) && data.lastPlayedAt > 0 ? data.lastPlayedAt : null;
+    status.textContent = playing ? "● currently playing" : !available ? "status unavailable" : lastPlayedAt !== null ? relativeTime(lastPlayedAt) : hasGame ? "recently played / time unavailable" : "not currently playing";
     status.classList.toggle("playing", playing);
     totalRow.hidden = !hasGame || !validMinutes(data.playtimeTotal);
     if (!totalRow.hidden) total.textContent = hours(data.playtimeTotal);
