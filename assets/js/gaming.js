@@ -4,9 +4,7 @@
   const status = document.getElementById("gaming-status");
   const icon = document.getElementById("gaming-icon");
   const stats = document.getElementById("gaming-stats");
-  const recent = document.getElementById("gaming-recent");
   const total = document.getElementById("gaming-total");
-  const recentRow = recent.parentElement;
   const totalRow = total.parentElement;
   let pending = false;
   const validMinutes = n => typeof n === "number" && Number.isFinite(n) && n >= 0;
@@ -53,7 +51,6 @@
     status.textContent = "● currently in-game";
     status.classList.add("playing");
     showIcon(discordIcon(activity));
-    recentRow.hidden = true;
     totalRow.hidden = true;
     const start = activity.timestamps?.start;
     sessionStart = typeof start === "number" && Number.isFinite(start) && start > 0 && start <= Date.now() ? start : null;
@@ -91,11 +88,9 @@
     const presence = ["online","offline","busy","away","snooze","looking to trade","looking to play"].includes(data.presence) ? data.presence : "unknown";
     status.textContent = playing ? "● currently in-game" : !available ? "status unavailable" : presence === "offline" ? "○ offline on steam" : presence === "unknown" ? "status unknown" : "● " + presence + " on steam";
     status.classList.toggle("playing", playing);
-    recentRow.hidden = !hasGame || !validMinutes(data.playtime2weeks);
     totalRow.hidden = !hasGame || !validMinutes(data.playtimeTotal);
-    if (!recentRow.hidden) recent.textContent = hours(data.playtime2weeks);
     if (!totalRow.hidden) total.textContent = hours(data.playtimeTotal);
-    stats.hidden = recentRow.hidden && totalRow.hidden;
+    stats.hidden = totalRow.hidden;
   }
   icon.addEventListener("error", () => { icon.hidden = true; fallback.hidden = false; });
   document.addEventListener("discord-activity", event => { discord = event.detail; choose(); });
