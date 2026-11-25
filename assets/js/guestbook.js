@@ -46,8 +46,8 @@
       widget = window.turnstile.render("#guestbook-turnstile", {
         sitekey: "0x4AAAAAAGS-BURutXKMO5on",
         theme: "dark",
-        size: "compact",
-        appearance: "always",
+        size: "normal",
+        appearance: "interaction-only",
         execution: "render",
         action: "guestbook",
         callback: value => {
