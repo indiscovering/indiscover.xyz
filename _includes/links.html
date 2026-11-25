@@ -8,7 +8,7 @@
       {% else %}
       <a href="{{ item.url }}">
       {% endif %}
-        <svg class="link-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="{{ '/assets/icons/outline.svg' | relative_url }}#{{ item.icon | strip }}"></use></svg>
+        <svg class="link-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="{{ '/assets/icons/outline.svg' | relative_url }}?v=2#{{ item.icon | strip }}"></use></svg>
         <span>{{ item.text }}</span>
         <span class="arrow" aria-hidden="true">{% if item.url == "#" %}+{% else %}↗{% endif %}</span>
       {% if item.url == "#" %}</button>{% else %}</a>{% endif %}
