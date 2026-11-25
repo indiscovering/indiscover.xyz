@@ -24,41 +24,81 @@
     updateButton();
   });
 
+  const verification = document.getElementById("guestbook-verification");
+  const retry = document.getElementById("guestbook-retry");
+
+  function verificationError(text) {
+    token = "";
+    updateButton();
+    verification.textContent = text;
+    retry.hidden = false;
+  }
+
+  function renderWidget() {
+    if (!dialog.open) return;
+    try {
+      if (widget !== null) window.turnstile.remove(widget);
+      widget = null;
+      token = "";
+      updateButton();
+      verification.textContent = "verifying...";
+      retry.hidden = true;
+      widget = window.turnstile.render("#guestbook-turnstile", {
+        sitekey: "0x4AAAAAAGS-BURutXKMO5on",
+        theme: "dark",
+        size: "compact",
+        appearance: "always",
+        execution: "render",
+        action: "guestbook",
+        callback: value => {
+          token = value;
+          verification.textContent = "verification complete.";
+          retry.hidden = true;
+          updateButton();
+        },
+        "expired-callback": () => verificationError("verification expired. retry below."),
+        "timeout-callback": () => verificationError("verification timed out. retry below."),
+        "error-callback": code => {
+          verificationError("verification failed (" + code + "). retry below.");
+        }
+      });
+      if (widget == null) verificationError("could not create verification widget.");
+    } catch (error) {
+      console.error("Guestbook Turnstile:", error);
+      verificationError("could not initialise verification. check browser console.");
+    }
+  }
+
   function initialiseWidget() {
-    if (widget !== null) {
-      window.turnstile.reset(widget);
+    if (window.turnstile && typeof window.turnstile.render === "function") {
+      window.turnstile.ready(renderWidget);
       return;
     }
     if (loadingWidget) return;
     loadingWidget = true;
+    verification.textContent = "loading verification...";
+    retry.hidden = true;
     const script = document.createElement("script");
     script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
     script.async = true;
     script.onload = () => {
-      window.turnstile.ready(() => {
-        loadingWidget = false;
-        widget = window.turnstile.render("#guestbook-turnstile", {
-          sitekey: "0x4AAAAAAGS-BURutXKMO5on",
-          theme: "dark",
-          size: "flexible",
-          action: "guestbook",
-          callback: value => { token = value; updateButton(); },
-          "expired-callback": () => { token = ""; updateButton(); },
-          "error-callback": () => {
-            token = "";
-            updateButton();
-            feedback.textContent = "verification unavailable. try reopening the guestbook.";
-          }
-        });
-      });
+      loadingWidget = false;
+      if (!window.turnstile) {
+        script.remove();
+        verificationError("verification script did not initialise.");
+        return;
+      }
+      window.turnstile.ready(renderWidget);
     };
     script.onerror = () => {
       loadingWidget = false;
       script.remove();
-      feedback.textContent = "could not load verification. try reopening the guestbook.";
+      verificationError("verification script blocked or unavailable.");
     };
     document.head.append(script);
   }
+
+  retry.addEventListener("click", initialiseWidget);
 
   async function loadEntries() {
     if (loadingEntries) return;
@@ -101,7 +141,7 @@
     if (sending) return;
     token = "";
     updateButton();
-    initialiseWidget();
+    requestAnimationFrame(initialiseWidget);
     loadEntries();
   });
 
@@ -135,7 +175,7 @@
       token = "";
       sending = false;
       updateButton();
-      if (widget !== null) window.turnstile.reset(widget);
+      if (widget !== null && dialog.open) renderWidget();
     }
   });
 })();

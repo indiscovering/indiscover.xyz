@@ -5,6 +5,8 @@
   <textarea id="guestbook-message" name="message" maxlength="500" rows="4" required placeholder="say something..."></textarea>
   <div id="guestbook-count" class="guestbook-small">0 / 500</div>
   <div id="guestbook-turnstile"></div>
+  <div id="guestbook-verification" class="guestbook-small" role="status">verification not started.</div>
+  <button id="guestbook-retry" type="button" hidden>[ retry verification ]</button>
   <button id="guestbook-submit" type="submit" disabled>[ sign guestbook ]</button>
   <p id="guestbook-feedback" role="status"></p>
 </form>
