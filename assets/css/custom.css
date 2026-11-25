@@ -92,21 +92,30 @@ dialog form { float: right; }
 #spotify-link { white-space: nowrap; }
 
 /* Guestbook */
-.guestbook-modal {
-  width: min(720px, 94vw);
-  max-height: 90vh;
-  padding: 20px;
-}
+.guestbook-modal { width: min(600px, 94vw); max-height: 90vh; padding: 24px; }
 .guestbook-modal h2 { margin-bottom: 4px; }
-.guestbook-intro, .guestbook-fallback { color: var(--muted); font-size: 12px; }
-.guestbook-frame {
-  display: block;
-  width: 100%;
-  height: min(65vh, 620px);
-  border: 1px solid var(--line);
-  background: var(--bg);
+.guestbook-intro, .guestbook-small { color: var(--muted); font-size: 12px; }
+#guestbook-form { float: none; clear: both; display: grid; gap: 8px; margin: 18px 0 24px; }
+#guestbook-form label { font-size: 12px; color: var(--muted); }
+#guestbook-form input, #guestbook-form textarea {
+  font: inherit; color: var(--text); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 0; padding: 8px; width: 100%;
 }
-@media (max-width: 480px) {
-  .guestbook-modal { padding: 12px; }
-  .guestbook-frame { height: 62vh; }
-}
+#guestbook-form textarea { resize: vertical; min-height: 90px; }
+#guestbook-form input:focus, #guestbook-form textarea:focus { outline: 1px solid var(--accent); }
+#guestbook-count { text-align: right; }
+#guestbook-submit, #guestbook-refresh { background: none; border: 1px solid var(--line); padding: 5px 9px; color: var(--accent); }
+#guestbook-submit { justify-self: start; }
+#guestbook-submit:disabled { opacity: .45; cursor: default; }
+#guestbook-submit:not(:disabled):hover, #guestbook-refresh:hover { background: #171c19; }
+#guestbook-feedback { margin: 0; color: var(--accent); font-size: 12px; overflow-wrap: anywhere; }
+.guestbook-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; border-top: 1px solid var(--line); padding-top: 12px; }
+#guestbook-refresh { font-size: 11px; }
+#guestbook-entries { font-size: 13px; overflow-wrap: anywhere; }
+.guestbook-entry { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.guestbook-entry-header { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.guestbook-entry-header strong { color: var(--accent); font-weight: normal; }
+.guestbook-entry-header time { color: var(--muted); font-size: 11px; }
+.guestbook-entry p { white-space: pre-wrap; margin: 6px 0 0; }
+#guestbook-turnstile { max-width: 100%; }
+@media (max-width: 480px) { .guestbook-modal { padding: 12px; } }

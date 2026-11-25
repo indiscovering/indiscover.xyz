@@ -16,8 +16,6 @@ setInterval(updateClock, 1000);
 document.querySelectorAll("[data-modal]").forEach(button => {
   button.addEventListener("click", () => {
     const dialog = document.getElementById(button.dataset.modal + "-modal");
-    const iframe = dialog.querySelector("iframe[data-src]");
-    if (iframe && !iframe.hasAttribute("src")) iframe.src = iframe.dataset.src;
     dialog.showModal();
   });
 });
