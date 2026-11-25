@@ -71,7 +71,7 @@
 
   function initialiseWidget() {
     if (window.turnstile && typeof window.turnstile.render === "function") {
-      window.turnstile.ready(renderWidget);
+      renderWidget();
       return;
     }
     if (loadingWidget) return;
@@ -88,7 +88,7 @@
         verificationError("verification script did not initialise.");
         return;
       }
-      window.turnstile.ready(renderWidget);
+      renderWidget();
     };
     script.onerror = () => {
       loadingWidget = false;
