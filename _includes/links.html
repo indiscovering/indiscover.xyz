@@ -1,27 +1,27 @@
-<ul class="list-style-none f3 container-sm">
+<section aria-labelledby="links-title">
+  <h2 id="links-title">links</h2>
+  <ul class="links">
     {% for item in site.data.links %}
-    <li class="mb-3 text-center text-semibold">
-        <a href="{{ item.url }}" 
-           class="Link--primary d-block p-3 border rounded-3 color-shadow-small color-bg-subtle"
-           {% if item.url == "#" %}
-           data-modal="{{ item.text | downcase | replace: ' ', '-' }}"
-           {% endif %}>
-            <svg class="bi mr-1" width="16" height="16" fill="currentColor">
-                <use xlink:href="{{ site.baseurl }}/assets/img/bootstrap-icons.svg#{{ item.icon | default: 'globe2' }}"/>
-            </svg><br>
-            {{ item.text }}
-        </a>
+    <li>
+      {% if item.url == "#" %}
+      <button type="button" data-modal="{{ item.text | downcase | replace: ' ', '-' }}">
+      {% else %}
+      <a href="{{ item.url }}">
+      {% endif %}
+        <span class="glyph" aria-hidden="true">{% case item.icon %}{% when 'music-player-fill' or 'music-note-beamed' %}[~]{% when 'envelope' %}[@]{% when 'pc-display' %}[#]{% when 'github' %}[+]{% else %}[&gt;]{% endcase %}</span>
+        <span>{{ item.text }}</span>
+        <span class="arrow" aria-hidden="true">{% if item.url == "#" %}+{% else %}↗{% endif %}</span>
+      {% if item.url == "#" %}</button>{% else %}</a>{% endif %}
     </li>
     {% endfor %}
-</ul>
-
-<!-- Add modals for each special link -->
+  </ul>
+</section>
 {% for item in site.data.links %}
 {% if item.url == "#" %}
 <!-- Dynamic modal -->
-<div id="{{ item.text | downcase | replace: ' ', '-' }}-modal" class="modal">
+<dialog id="{{ item.text | downcase | replace: ' ', '-' }}-modal" aria-label="{{ item.text }}">
     <div class="modal-content">
-        <span class="close-btn">&times;</span>
+        <form method="dialog"><button class="close-btn" aria-label="Close">[x]</button></form>
         {% if item.text == "about me" %}
         <h2>about me</h2>
         <p>placeholder</p>
@@ -44,6 +44,6 @@
         <p>mouse - logitech g502 hero, 650dpi</p>
         {% endif %}
     </div>
-</div>
+</dialog>
 {% endif %}
 {% endfor %}

@@ -8,7 +8,7 @@ description: "dyl's personal site and social links"
 language: "en"
 
 # The URL of the image to use in embeds (e.g., Open Graph and Twitter Card)
-image: "https://indiscover.xyz/assets/img/dyl.png"
+image: "https://indiscover.xyz/assets/img/avatar.png"
 
 # Optional: Additional Open Graph metadata
 meta:
