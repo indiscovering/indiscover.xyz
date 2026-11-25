@@ -70,3 +70,11 @@ dialog form { float: right; }
   .page { margin: 20px auto; padding: 16px 8px; }
   .identity { gap: 12px; }
 }
+
+/* Listening activity */
+.audio-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.audio-heading a { font-size: 12px; white-space: nowrap; }
+.audio-track { display: flex; align-items: baseline; gap: 12px; border-top: 1px solid var(--line); padding: 8px 4px 2px; overflow-wrap: anywhere; }
+.audio-note { color: var(--accent); flex-shrink: 0; }
+.audio-status { padding-left: 4px; font-size: 12px; color: var(--muted); }
+.audio-status.playing { color: var(--accent); }
