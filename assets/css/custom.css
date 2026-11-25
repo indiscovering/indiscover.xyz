@@ -198,3 +198,10 @@ dialog form { float: right; }
 #gaming-stats dt { color: var(--muted); }
 #gaming-stats dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
 #gaming-stats[hidden], #gaming-stats > div[hidden], #gaming-icon[hidden] { display: none; }
+
+/* Discord presence */
+#discord-presence { display: inline-block; width: 9px; height: 9px; border-radius: 50%; vertical-align: .12em; margin-left: 3px; background: transparent; border: 1px solid var(--muted); }
+#discord-presence[data-status="online"] { background: #23a55a; border-color: #23a55a; }
+#discord-presence[data-status="idle"] { background: #f0b232; border-color: #f0b232; }
+#discord-presence[data-status="dnd"] { background: #f23f43; border-color: #f23f43; }
+#discord-presence[data-status="offline"] { background: #80848e; border-color: #80848e; }

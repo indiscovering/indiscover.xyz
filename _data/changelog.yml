@@ -3,6 +3,7 @@
   changes:
     - windowed desktop layout
     - live steam activity and playtime
+    - live discord presence
 - version: v2.2
   title: visual polish
   changes:
