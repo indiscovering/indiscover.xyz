@@ -1,3 +1,8 @@
+- version: v2.3
+  title: desktop and gaming
+  changes:
+    - windowed desktop layout
+    - live steam activity and playtime
 - version: v2.2
   title: visual polish
   changes:
