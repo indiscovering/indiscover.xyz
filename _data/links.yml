@@ -12,7 +12,7 @@
 
 - text: lastfm
   url: https://www.last.fm/user/horizoned
-  icon: music-player-fill
+  icon: music-note-beamed
 
 - text: discord profile
   url: https://discord.com/users/345581101302939648
@@ -28,11 +28,11 @@
 
 - text: beatleader profile
   url: https://beatleader.xyz/u/indiscover
-  icon: caret-down-square-fill
+  icon: beat-sabers
 
 - text: quaver profile
   url: https://quavergame.com/user/207530
-  icon: music-note-beamed
+  icon: caret-down-square-fill
 
 - text: osu profile
   url: https://osu.ppy.sh/users/20614503
