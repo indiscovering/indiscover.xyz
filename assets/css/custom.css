@@ -153,7 +153,7 @@ dialog form { float: right; }
 @media (prefers-reduced-motion: reduce) { .ascii-loader::before, .error-ascii { animation: none; } }
 
 /* Windowed desktop experiment. Scoped to the homepage. */
-.page.desktop { width: min(100% - 40px, 900px); padding: 0; margin: clamp(28px, 8vh, 90px) auto 32px; background: transparent; }
+.page.desktop { width: min(100% - 40px, 900px); padding: 0; margin: 0 auto; background: transparent; }
 .desktop-top { display: flex; justify-content: space-between; gap: 12px; margin: 0 0 12px; padding: 0 1px; color: var(--muted); font-size: 12px; }
 .desktop-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: 14px; align-items: start; }
 .desktop-left { display: grid; gap: 14px; min-width: 0; }
@@ -174,14 +174,14 @@ dialog form { float: right; }
 .desktop > footer { margin-top: 18px; padding: 12px 14px; border: 1px solid var(--line); background: rgba(12,13,14,.94); }
 .desktop > footer .footer-end { margin-top: 8px; }
 @media (max-width: 660px) {
-  .page.desktop { width: calc(100% - 28px); margin: 22px auto; }
+  .page.desktop { width: calc(100% - 28px); margin: 0 auto; }
   .desktop-grid { grid-template-columns: minmax(0,1fr); gap: 12px; }
   .desktop-left { gap: 12px; }
   .window-body { padding: 14px; }
   .desktop-top { font-size: 11px; }
 }
 @media (max-width: 360px) {
-  .desktop-top span:last-child { display: none; }
+  
   .desktop .identity { flex-wrap: wrap; }
 }
 
@@ -208,3 +208,12 @@ dialog form { float: right; }
 
 #gaming-fallback { width: 40px; height: 40px; flex: 0 0 40px; display: grid; place-items: center; border: 1px solid var(--line); color: var(--accent); background: #171c19; }
 #gaming-fallback[hidden] { display: none; }
+
+/* Centre the whole desktop when it fits; allow normal scrolling otherwise. */
+body.desktop-shell { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; padding: 24px 0; }
+body.desktop-shell > .page.desktop { margin-block: auto; flex: 0 0 auto; }
+@media (max-width: 660px) {
+  body.desktop-shell { display: block; padding: 22px 0; }
+  body.desktop-shell > .page.desktop { margin: 0 auto; }
+  .desktop > footer .footer-end { flex-wrap: wrap; }
+}
