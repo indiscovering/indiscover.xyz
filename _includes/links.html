@@ -8,7 +8,7 @@
       {% else %}
       <a href="{{ item.url }}">
       {% endif %}
-        <span class="glyph" aria-hidden="true">{% case item.icon %}{% when 'music-player-fill' or 'music-note-beamed' %}[~]{% when 'envelope' %}[@]{% when 'pc-display' %}[#]{% when 'github' %}[+]{% else %}[&gt;]{% endcase %}</span>
+        <span class="glyph" aria-hidden="true">{% case item.icon %}{% when 'music-player-fill' or 'music-note-beamed' %}[~]{% when 'book' %}[=]{% when 'envelope' %}[@]{% when 'pc-display' %}[#]{% when 'github' %}[+]{% else %}[&gt;]{% endcase %}</span>
         <span>{{ item.text }}</span>
         <span class="arrow" aria-hidden="true">{% if item.url == "#" %}+{% else %}↗{% endif %}</span>
       {% if item.url == "#" %}</button>{% else %}</a>{% endif %}

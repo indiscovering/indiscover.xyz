@@ -41,3 +41,7 @@
 - text: email
   url: "#"
   icon: envelope
+
+- text: guestbook
+  url: https://indiscover.atabook.org/
+  icon: book
