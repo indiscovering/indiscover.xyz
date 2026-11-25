@@ -19,10 +19,15 @@
 {% for item in site.data.links %}
 {% if item.url == "#" %}
 <!-- Dynamic modal -->
-<dialog id="{{ item.text | downcase | replace: ' ', '-' }}-modal" aria-label="{{ item.text }}">
+<dialog id="{{ item.text | downcase | replace: ' ', '-' }}-modal" aria-label="{{ item.text }}"{% if item.text == "guestbook" %} class="guestbook-modal"{% endif %}>
     <div class="modal-content">
         <form method="dialog"><button class="close-btn" aria-label="Close">[x]</button></form>
-        {% if item.text == "about me" %}
+        {% if item.text == "guestbook" %}
+        <h2>~/guestbook</h2>
+        <p class="guestbook-intro">leave your mark.</p>
+        <iframe class="guestbook-frame" title="indiscover guestbook" data-src="{{ item.embed_url | escape }}" referrerpolicy="no-referrer"></iframe>
+        <p class="guestbook-fallback">having trouble? <a href="{{ item.embed_url | escape }}" target="_blank" rel="noopener noreferrer">open guestbook separately ↗</a></p>
+        {% elsif item.text == "about me" %}
         <h2>about me</h2>
         <p>placeholder</p>
         {% elsif item.text == "email" %}

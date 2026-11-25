@@ -43,5 +43,6 @@
   icon: envelope
 
 - text: guestbook
-  url: https://indiscover.atabook.org/
+  url: "#"
   icon: book
+  embed_url: https://indiscover.atabook.org/
