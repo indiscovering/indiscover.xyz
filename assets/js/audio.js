@@ -63,7 +63,7 @@
     if (url) spotify.href = url;
     track.replaceChildren();
     if (latest?.title && latest?.artist) {
-      const text = latest.title + " — " + latest.artist;
+      const text = (latest.title + " — " + latest.artist).toLowerCase();
       if (url) {
         const link = document.createElement("a");
         link.href = url;

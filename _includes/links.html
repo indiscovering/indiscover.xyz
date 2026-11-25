@@ -24,7 +24,6 @@
         <form method="dialog"><button class="close-btn" aria-label="Close">[x]</button></form>
         {% if item.text == "guestbook" %}
         <h2>~/guestbook</h2>
-        <p class="guestbook-intro">leave your mark.</p>
         {% include guestbook.html %}
         {% elsif item.text == "about me" %}
         <h2>about me</h2>
@@ -37,7 +36,7 @@
         <p>if you send an email to my forward address, this is the email address you will recieve a reply from. this is simply for privacy as to not share my main email address.</p>
         <p>i check this mailbox less often, so you may have to wait a while for a response</p>
         {% elsif item.text == "pc specs" %}
-        <h2>my pc specs:</h2>
+        <h2>~/specs</h2>
         <p>cpu - intel core i5-12400f</p>
         <p>ram - 32gb of corsair vengeance rgb pro, ddr4</p>
         <p>gpu - zotac gaming rtx 4060, 8gb vram</p>
@@ -45,7 +44,7 @@
         <p>psu - corsair cv550</p>
         <p>monitor - 32 inch AOC CQ32G4VE running at 1440p and 180hz </p>
         <p>keyboard - corsair k70 pro rgb tkl</p>
-        <p>mouse - logitech g502 hero, 650dpi</p>
+        <p>mouse - razer basilisk v3 pro, 1300dpi</p>
         {% endif %}
     </div>
 </dialog>
