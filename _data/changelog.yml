@@ -1,9 +1,3 @@
-- version: v2.3
-  title: interactive terminal
-  changes:
-    - browser-based shell and virtual files
-    - command history and autocomplete
-    - ascii screensaver and a few hidden surprises
 - version: v2.2
   title: visual polish
   changes:
