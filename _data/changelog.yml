@@ -4,6 +4,7 @@
     - windowed desktop layout
     - live steam activity and playtime
     - live discord presence
+    - non-steam gaming activity and session timer
 - version: v2.2
   title: visual polish
   changes:

@@ -17,8 +17,10 @@
       const result = await response.json();
       const state = result.data?.discord_status;
       render(result.success && states.includes(state) ? state : "unavailable");
+      document.dispatchEvent(new CustomEvent("discord-activity", {detail: result.success ? result.data : null}));
     } catch {
       render("unavailable");
+      document.dispatchEvent(new CustomEvent("discord-activity", {detail: null}));
     } finally {
       pending = false;
     }

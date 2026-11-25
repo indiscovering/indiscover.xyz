@@ -1,10 +1,11 @@
 <section class="gaming" aria-labelledby="gaming-title">
   <div class="audio-heading">
     <h2 id="gaming-title">steam / activity</h2>
-    <a href="https://steamcommunity.com/id/indiscover">steam ↗</a>
+    <a id="gaming-source" href="https://steamcommunity.com/id/indiscover">steam ↗</a>
   </div>
   <div class="gaming-track">
     <img id="gaming-icon" alt="" width="40" height="40" hidden>
+    <span id="gaming-fallback" aria-hidden="true" hidden><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10c3 0 4 3 5 8s-2 6-4 4l-3-3H9l-3 3c-2 2-5 1-4-4s2-8 5-8zM7 10v5m-2.5-2.5h5M16 11h.01M19 14h.01"/></svg></span>
     <div class="gaming-info">
       <div id="gaming-track"><span class="ascii-loader" aria-hidden="true"></span> checking gaming activity...</div>
       <p id="gaming-status" class="audio-status"></p>
@@ -13,6 +14,7 @@
   <dl id="gaming-stats" hidden>
     <div><dt>playtime / last 2 weeks</dt><dd id="gaming-recent"></dd></div>
     <div><dt>total playtime</dt><dd id="gaming-total"></dd></div>
+    <div hidden><dt>session playtime</dt><dd id="gaming-session"></dd></div>
   </dl>
   <noscript><p class="audio-status">enable javascript to see gaming activity.</p></noscript>
 </section>

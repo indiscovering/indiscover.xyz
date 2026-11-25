@@ -205,3 +205,6 @@ dialog form { float: right; }
 #discord-presence[data-status="idle"] { background: #f0b232; border-color: #f0b232; }
 #discord-presence[data-status="dnd"] { background: #f23f43; border-color: #f23f43; }
 #discord-presence[data-status="offline"] { background: #80848e; border-color: #80848e; }
+
+#gaming-fallback { width: 40px; height: 40px; flex: 0 0 40px; display: grid; place-items: center; border: 1px solid var(--line); color: var(--accent); background: #171c19; }
+#gaming-fallback[hidden] { display: none; }
