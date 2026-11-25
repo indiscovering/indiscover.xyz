@@ -1,7 +1,7 @@
 - version: v2.2
   title: visual polish
   changes:
-    - monochrome pixel icons
+    - monochrome outline icons
     - ascii loading indicators
     - hardware file tree
     - custom 404 and changelog
