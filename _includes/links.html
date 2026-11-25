@@ -1,5 +1,6 @@
-<section aria-labelledby="links-title">
-  <h2 id="links-title">links</h2>
+<section class="desktop-window directory-window" aria-labelledby="links-title">
+  <div class="window-bar"><h2 id="links-title">~/links</h2><span class="window-mark" aria-hidden="true">▦</span></div>
+  <div class="window-body">
   <ul class="links">
     {% for item in site.data.links %}
     <li>
@@ -15,6 +16,7 @@
     </li>
     {% endfor %}
   </ul>
+  </div>
 </section>
 {% for item in site.data.links %}
 {% if item.url == "#" %}

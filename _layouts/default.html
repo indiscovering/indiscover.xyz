@@ -21,16 +21,31 @@
 
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-  <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}?v=2.2.1">
+  <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}?v=2.2.2-window">
 
 </head>
 <body>
   <canvas id="snow" aria-hidden="true"></canvas>
-  <main class="page">
-    {% include profile.html %}
-    {% include interests.html %}
-    {% include audio.html %}
-    {% include links.html %}
+  <main class="page desktop">
+    <div class="desktop-top"><span>~ / indiscover.xyz</span><span>personal space / www</span></div>
+    <div class="desktop-grid">
+      <div class="desktop-left">
+        <div class="desktop-window">
+          <div class="window-bar"><span>~/home</span><span class="window-mark" aria-hidden="true">▦</span></div>
+          <div class="window-body">
+            {% include profile.html %}
+            {% include interests.html %}
+          </div>
+        </div>
+        <div class="desktop-window activity-window">
+          <div class="window-bar"><span>~/activity</span><span class="window-mark" aria-hidden="true">▦</span></div>
+          <div class="window-body">
+            {% include audio.html %}
+          </div>
+        </div>
+      </div>
+      {% include links.html %}
+    </div>
     {% include footer.html %}
   </main>
   <script src="{{ '/assets/js/site.js' | relative_url }}?v=2.1" defer></script>
