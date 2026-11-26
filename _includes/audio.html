@@ -6,11 +6,13 @@
   <div class="audio-track">
     <img id="audio-cover" width="40" height="40" alt="" hidden>
     <span id="audio-cover-fallback" class="audio-note" aria-hidden="true">♫</span>
+    <div class="audio-track-info">
     <span id="audio-track"><span class="ascii-loader" aria-hidden="true"></span> checking listening activity...</span>
-  </div>
-  <div id="audio-progress" hidden>
+    <div id="audio-progress" hidden>
     <progress id="track-progress" value="0" max="1" aria-label="Playback progress"></progress>
     <div class="audio-times"><span id="elapsed"></span><span id="duration"></span></div>
+    </div>
+    </div>
   </div>
   <div class="audio-meta">
     <p id="audio-status" class="audio-status"></p>

@@ -232,5 +232,6 @@ body.desktop-shell > .page.desktop { margin-block: auto; flex: 0 0 auto; }
 #audio-cover-fallback { display: grid; place-items: center; background: #171c19; }
 #audio-cover[hidden], #audio-cover-fallback[hidden] { display: none; }
 #audio-track { min-width: 0; overflow-wrap: anywhere; }
-#audio-progress { margin-left: 54px; }
+.audio-track-info { flex: 1; min-width: 0; }
+.audio-track-info #audio-progress { margin: 5px 0 0; }
 #guestbook-link-count { color: var(--muted); font-size: 12px; }
