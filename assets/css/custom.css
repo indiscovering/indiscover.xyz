@@ -219,7 +219,7 @@ body.desktop-shell > .page.desktop { margin-block: auto; flex: 0 0 auto; }
 }
 
 /* Steam presence, matching the Discord profile indicator. */
-#gaming-title[data-presence]::after { content: ""; display: inline-block; width: 7px; height: 7px; margin-left: 11px; vertical-align: middle; position: relative; top: 0.25px; border-radius: 50%; background: transparent; border: 1px solid var(--muted); }
+#gaming-title[data-presence]::after { content: ""; display: inline-block; width: 7px; height: 7px; margin-left: 11px; vertical-align: middle; position: relative; top: 0.2px; border-radius: 50%; background: transparent; border: 1px solid var(--muted); }
 #gaming-title[data-presence="online"]::after, #gaming-title[data-presence="looking to trade"]::after, #gaming-title[data-presence="looking to play"]::after { background: #23a55a; border-color: #23a55a; }
 #gaming-title[data-presence="away"]::after, #gaming-title[data-presence="snooze"]::after { background: #f0b232; border-color: #f0b232; }
 #gaming-title[data-presence="busy"]::after { background: #f23f43; border-color: #f23f43; }
