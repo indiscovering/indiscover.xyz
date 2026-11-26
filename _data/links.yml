@@ -38,10 +38,6 @@
   url: https://osu.ppy.sh/users/20614503
   icon: 1-circle 
 
-- text: email
-  url: "#"
-  icon: envelope
-
 - text: guestbook
   url: "#"
   icon: book
