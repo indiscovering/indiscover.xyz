@@ -6,6 +6,20 @@
   const progress = document.getElementById("track-progress");
   const elapsed = document.getElementById("elapsed");
   const duration = document.getElementById("duration");
+  const cover = document.getElementById("audio-cover");
+  const coverFallback = document.getElementById("audio-cover-fallback");
+  let coverUrl = null;
+  cover.addEventListener("load", () => { cover.hidden = false; coverFallback.hidden = true; });
+  cover.addEventListener("error", () => { cover.hidden = true; coverFallback.hidden = false; });
+  function showCover(value) {
+    let url = null;
+    try { const parsed = new URL(value); if (parsed.origin === "https://i.scdn.co" && /^\/image\/[a-zA-Z0-9]+$/.test(parsed.pathname)) url = parsed.href; } catch {}
+    if (url === coverUrl) return;
+    coverUrl = url;
+    cover.hidden = true;
+    coverFallback.hidden = false;
+    if (url) cover.src = url; else cover.removeAttribute("src");
+  }
   const endpoint = "https://api.indiscover.workers.dev/now-playing";
   let latest = null;
   let pending = false;
@@ -57,6 +71,7 @@
     title.textContent = "audio / " + (playing ? "now playing" : paused ? "paused" : failed || latest?.status === "unavailable" ? "listening activity" : "last played");
     status.classList.toggle("playing", playing);
     progressBox.hidden = !(playing || paused) || !Number.isFinite(latest?.duration) || latest.duration <= 0 || !Number.isFinite(latest.progress) || !Number.isFinite(latest.fetchedAt);
+    showCover(latest?.artwork);
     const url = trackUrl(latest?.url);
     track.replaceChildren();
     if (latest?.title && latest?.artist) {

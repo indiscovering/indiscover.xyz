@@ -10,7 +10,7 @@
       <a href="{{ item.url }}">
       {% endif %}
         <svg class="link-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="{{ '/assets/icons/outline.svg' | relative_url }}?v=4#{{ item.icon | strip }}"></use></svg>
-        <span>{{ item.text }}</span>
+        <span>{{ item.text }}{% if item.text == "guestbook" %} <span id="guestbook-link-count" hidden></span>{% endif %}</span>
         <span class="arrow" aria-hidden="true">{% if item.url == "#" %}+{% else %}↗{% endif %}</span>
       {% if item.url == "#" %}</button>{% else %}</a>{% endif %}
     </li>

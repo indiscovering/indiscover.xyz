@@ -8,6 +8,7 @@
   const submit = document.getElementById("guestbook-submit");
   const feedback = document.getElementById("guestbook-feedback");
   const entries = document.getElementById("guestbook-entries");
+  const linkCount = document.getElementById("guestbook-link-count");
   const heading = document.getElementById("guestbook-entries-title");
   let widget = null;
   let loadingWidget = false;
@@ -114,7 +115,10 @@
       if (!response.ok) throw new Error();
       const data = await response.json();
       if (!Array.isArray(data.messages)) throw new Error();
-      heading.textContent = "entries / " + String(data.messages.length).padStart(3, "0");
+      const total = Number.isSafeInteger(data.total) && data.total >= data.messages.length ? data.total : data.messages.length;
+      heading.textContent = "entries / " + String(total).padStart(3, "0");
+      linkCount.textContent = "[" + total + "]";
+      linkCount.hidden = false;
       entries.replaceChildren();
       if (!data.messages.length) entries.textContent = "no messages yet. be the first.";
       for (const item of data.messages) {
@@ -142,6 +146,8 @@
       loadingEntries = false;
     }
   }
+
+  loadEntries();
 
   document.querySelector('[data-modal="guestbook"]').addEventListener("click", () => {
     if (sending) return;

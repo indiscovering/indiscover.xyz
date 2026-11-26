@@ -224,3 +224,13 @@ body.desktop-shell > .page.desktop { margin-block: auto; flex: 0 0 auto; }
 #gaming-title[data-presence="away"]::after, #gaming-title[data-presence="snooze"]::after { background: #f0b232; border-color: #f0b232; }
 #gaming-title[data-presence="busy"]::after { background: #f23f43; border-color: #f23f43; }
 #gaming-title[data-presence="offline"]::after { background: #80848e; border-color: #80848e; }
+
+/* Listening artwork and guestbook count */
+.audio-track { align-items: center; gap: 10px; }
+#audio-cover, #audio-cover-fallback { width: 40px; height: 40px; flex: 0 0 40px; box-sizing: border-box; border: 1px solid var(--line); }
+#audio-cover { object-fit: cover; }
+#audio-cover-fallback { display: grid; place-items: center; background: #171c19; }
+#audio-cover[hidden], #audio-cover-fallback[hidden] { display: none; }
+#audio-track { min-width: 0; overflow-wrap: anywhere; }
+#audio-progress { margin-left: 54px; }
+#guestbook-link-count { color: var(--muted); font-size: 12px; }
