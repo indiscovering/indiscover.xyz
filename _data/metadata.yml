@@ -2,7 +2,7 @@
 title: "dyl's page"
 
 # The description of the website that shows up in web search results
-description: "a little corner of the internet."
+description: "index of /home/dyl"
 
 # The main language of the site. Use HTML Language Code Reference.
 language: "en"
@@ -14,7 +14,7 @@ image: "https://indiscover.xyz/assets/img/avatar.png"
 meta:
   og:site_name: "indiscover.xyz"
   og:title: "dyl's page"
-  og:description: "a little corner of the internet."
+  og:description: "index of /home/dyl"
   og:image: "https://indiscover.xyz/assets/img/avatar.png"
   og:image:width: "1242"
   og:image:height: "1242"
