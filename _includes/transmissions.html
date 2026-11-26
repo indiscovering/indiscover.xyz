@@ -1,0 +1,12 @@
+<section class="desktop-window transmission-window" aria-labelledby="transmission-title">
+  <div class="window-bar"><h2 id="transmission-title">~/transmissions</h2><span class="window-mark" aria-hidden="true">[x]</span></div>
+  <div class="window-body">
+    <p id="transmission-date" class="guestbook-small"></p>
+    <p id="transmission-latest" class="transmission-message">checking transmissions...</p>
+    <button class="transmission-archive" data-modal="transmissions" type="button">view archive +</button>
+  </div>
+</section>
+<dialog id="transmissions-modal" aria-label="transmission archive" class="guestbook-modal">
+  <div class="modal-content"><form method="dialog"><button class="close-btn" aria-label="Close">[x]</button></form>
+  <h2>~/transmissions/archive</h2><div id="transmission-entries">loading...</div></div>
+</dialog>

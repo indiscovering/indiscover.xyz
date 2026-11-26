@@ -1,0 +1,12 @@
+<h2>~/inbox</h2>
+<p class="guestbook-intro">send a private message to dyl. no name or email required. messages are not published. cloudflare processes requests for verification and abuse prevention; a hashed network identifier is used for rate limiting. don't include sensitive information.</p>
+<form id="inbox-form">
+  <label for="inbox-message">message</label>
+  <textarea id="inbox-message" maxlength="1000" required placeholder="type something here..."></textarea>
+  <span id="inbox-count" class="guestbook-small">0 / 1000</span>
+  <div id="inbox-turnstile"></div>
+  <span id="inbox-verification" class="guestbook-small"></span>
+  <button type="button" id="inbox-retry" hidden>[ retry verification ]</button>
+  <button type="submit" id="inbox-submit" disabled>[ transmit ]</button>
+  <p id="inbox-feedback" role="status"></p>
+</form>

@@ -138,6 +138,16 @@
         body.textContent = item.message;
         header.append(alias, date);
         article.append(header, body);
+        if (typeof item.reply === "string" && item.reply.trim()) {
+          const reply = document.createElement("div");
+          reply.className = "owner-reply";
+          const label = document.createElement("strong");
+          label.textContent = "dyl [owner]";
+          const replyText = document.createElement("p");
+          replyText.textContent = item.reply;
+          reply.append(label, replyText);
+          article.append(reply);
+        }
         entries.append(article);
       }
     } catch {

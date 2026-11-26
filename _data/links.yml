@@ -45,3 +45,7 @@
 - text: guestbook
   url: "#"
   icon: book
+
+- text: anonymous inbox
+  url: "#"
+  icon: inbox
