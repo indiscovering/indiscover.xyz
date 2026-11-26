@@ -1,8 +1,8 @@
 # The title of the website that shows up in the browser tab and bookmarks
-title: "dyl's site"
+title: "dyl's page"
 
 # The description of the website that shows up in web search results
-description: "dyl's personal site and social links"
+description: "a little corner of the internet."
 
 # The main language of the site. Use HTML Language Code Reference.
 language: "en"
@@ -12,8 +12,9 @@ image: "https://indiscover.xyz/assets/img/avatar.png"
 
 # Optional: Additional Open Graph metadata
 meta:
-  og:title: "dyl's site"
-  og:description: "dyl's personal site and social links"
+  og:site_name: "indiscover.xyz"
+  og:title: "dyl's page"
+  og:description: "a little corner of the internet."
   og:image: "https://indiscover.xyz/assets/img/avatar.png"
   og:image:width: "1242"
   og:image:height: "1242"
