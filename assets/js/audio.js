@@ -83,6 +83,7 @@
     const paused = !failed && latest?.status === "paused";
     title.textContent = "audio / " + (playing ? "now playing" : paused ? "paused" : failed || latest?.status === "unavailable" ? "listening activity" : "last played");
     status.classList.toggle("playing", playing);
+    status.classList.toggle("paused", paused);
     progressBox.hidden = !(playing || paused) || !Number.isFinite(latest?.duration) || latest.duration <= 0 || !Number.isFinite(latest.progress) || !Number.isFinite(latest.fetchedAt);
     showCover(latest?.artwork);
     const url = trackUrl(latest?.url);
@@ -102,7 +103,7 @@
     }
     adjustWrappedTitle();
     status.textContent = failed ? (latest?.title ? "last known track / update unavailable" : "will retry automatically") :
-      playing ? "● currently listening" : paused ? "Ⅱ paused" :
+      playing ? "● currently listening" : paused ? "paused" :
       latest?.status === "last-played" ? relativeTime(latest.playedAt) :
       latest?.status === "unavailable" ? "not available right now" : "not listening";
     tick();
