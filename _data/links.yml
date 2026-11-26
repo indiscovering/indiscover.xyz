@@ -1,47 +1,59 @@
 - text: twitter
+  group: socials
   url: https://x.com/INDSCVR
   icon: twitter
   
 - text: insta
+  group: socials
   url: https://www.instagram.com/indiscovering
   icon: instagram
 
 - text: steam
+  group: gaming
   url: https://steamcommunity.com/id/indiscover
   icon: steam
 
 - text: lastfm
+  group: socials
   url: https://www.last.fm/user/horizoned
   icon: music-note-beamed
 
 - text: discord profile
+  group: socials
   url: https://discord.com/users/345581101302939648
   icon: discord
 
 - text: pc specs
+  group: site stuff
   url: "#"
   icon: pc-display
 
 - text: github
+  group: site stuff
   url: https://github.com/indiscovering
   icon: github
 
 - text: beatleader profile
+  group: gaming
   url: https://beatleader.xyz/u/indiscover
   icon: beat-sabers
 
 - text: quaver profile
+  group: gaming
   url: https://quavergame.com/user/207530
   icon: caret-down-square-fill
 
 - text: osu profile
+  group: gaming
   url: https://osu.ppy.sh/users/20614503
   icon: 1-circle 
 
 - text: guestbook
+  group: site stuff
   url: "#"
   icon: book
 
 - text: anonymous inbox
+  group: site stuff
   url: "#"
   icon: inbox

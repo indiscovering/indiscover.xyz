@@ -1,8 +1,13 @@
 <section class="desktop-window directory-window" aria-labelledby="links-title">
   <div class="window-bar"><h2 id="links-title">~/links</h2><span class="window-mark" aria-hidden="true">[x]</span></div>
   <div class="window-body">
-  <ul class="links">
-    {% for item in site.data.links %}
+  {% assign groups = "socials|gaming|site stuff" | split: "|" %}
+  {% for group in groups %}
+  <div class="link-group">
+    <h3 class="link-group-title">{{ group }}</h3>
+    {% assign grouped_links = site.data.links | where: "group", group %}
+    <ul class="links">
+    {% for item in grouped_links %}
     <li>
       {% if item.url == "#" %}
       <button type="button" data-modal="{{ item.text | downcase | replace: ' ', '-' }}">
@@ -15,7 +20,9 @@
       {% if item.url == "#" %}</button>{% else %}</a>{% endif %}
     </li>
     {% endfor %}
-  </ul>
+    </ul>
+  </div>
+  {% endfor %}
   </div>
 </section>
 {% for item in site.data.links %}
