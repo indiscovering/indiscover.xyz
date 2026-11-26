@@ -238,3 +238,7 @@ body.desktop-shell > .page.desktop { margin-block: auto; flex: 0 0 auto; }
 
 /* Tighten only multiline track titles; preserve the single-line layout. */
 #audio-track.wrapped { display: block; line-height: 1.35; }
+
+/* Active window focus */
+.desktop-window.window-focused { border-color: #789682; }
+.desktop-window.window-focused > .window-bar { background: #29392f; }

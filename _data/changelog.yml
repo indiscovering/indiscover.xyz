@@ -1,3 +1,10 @@
+- version: v2.4
+  title: personality update
+  changes:
+    - spotify album artwork
+    - guestbook entry count
+    - active window focus
+    - animated terminal favicon
 - version: v2.3
   title: desktop and gaming
   changes:
