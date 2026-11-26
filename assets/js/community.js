@@ -1,38 +1,5 @@
 (() => {
   const base = "https://guestbook.indiscover.workers.dev";
-  const latest = document.getElementById("transmission-latest");
-  const date = document.getElementById("transmission-date");
-  const archive = document.getElementById("transmission-entries");
-  const stamp = n => new Date(n * 1000).toLocaleString("en-GB", {timeZone:"Europe/London", dateStyle:"medium", timeStyle:"short"}).toLowerCase();
-  let loading = false;
-  async function transmissions() {
-    if (loading) return;
-    loading = true;
-    try {
-      const r = await fetch(base + "/transmissions", {cache:"no-store", signal:AbortSignal.timeout(12000)});
-      if (!r.ok) throw Error();
-      const d = await r.json();
-      if (!Array.isArray(d.transmissions)) throw Error();
-      latest.textContent = d.transmissions[0]?.message || "no transmissions yet.";
-      date.textContent = d.transmissions.length ? stamp(d.transmissions[0].created_at) : "";
-      archive.replaceChildren();
-      if (!d.transmissions.length) archive.textContent = "no transmissions yet.";
-      for (const item of d.transmissions) {
-        const article = document.createElement("article");
-        article.className = "guestbook-entry";
-        const time = document.createElement("div");
-        time.className = "guestbook-small";
-        time.textContent = stamp(item.created_at) + (item.updated_at ? " / edited" : "");
-        const p = document.createElement("p");
-        p.textContent = item.message;
-        article.append(time,p);
-        archive.append(article);
-      }
-    } catch { latest.textContent = "transmissions unavailable."; date.textContent = ""; archive.textContent = "could not load transmissions."; }
-    finally { loading = false; }
-  }
-  transmissions();
-  document.querySelector('[data-modal="transmissions"]').addEventListener("click", transmissions);
   const dialog = document.getElementById("anonymous-inbox-modal");
   const form = document.getElementById("inbox-form");
   const message = document.getElementById("inbox-message");
