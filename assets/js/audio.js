@@ -6,7 +6,6 @@
   const progress = document.getElementById("track-progress");
   const elapsed = document.getElementById("elapsed");
   const duration = document.getElementById("duration");
-  const spotify = document.getElementById("spotify-link");
   const endpoint = "https://api.indiscover.workers.dev/now-playing";
   let latest = null;
   let pending = false;
@@ -59,8 +58,6 @@
     status.classList.toggle("playing", playing);
     progressBox.hidden = !(playing || paused) || !Number.isFinite(latest?.duration) || latest.duration <= 0 || !Number.isFinite(latest.progress) || !Number.isFinite(latest.fetchedAt);
     const url = trackUrl(latest?.url);
-    spotify.hidden = !url;
-    if (url) spotify.href = url;
     track.replaceChildren();
     if (latest?.title && latest?.artist) {
       const text = (latest.title + " — " + latest.artist).toLowerCase();
