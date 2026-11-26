@@ -24,12 +24,12 @@
   icon: discord
 
 - text: pc specs
-  group: site stuff
+  group: other
   url: "#"
   icon: pc-display
 
 - text: github
-  group: site stuff
+  group: other
   url: https://github.com/indiscovering
   icon: github
 
@@ -49,11 +49,11 @@
   icon: 1-circle 
 
 - text: guestbook
-  group: site stuff
+  group: other
   url: "#"
   icon: book
 
 - text: anonymous inbox
-  group: site stuff
+  group: other
   url: "#"
   icon: inbox
