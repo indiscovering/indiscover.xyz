@@ -235,3 +235,6 @@ body.desktop-shell > .page.desktop { margin-block: auto; flex: 0 0 auto; }
 .audio-track-info { flex: 1; min-width: 0; }
 .audio-track-info #audio-progress { margin: 5px 0 0; }
 #guestbook-link-count { color: var(--muted); font-size: 12px; }
+
+/* Tighten only multiline track titles; preserve the single-line layout. */
+#audio-track.wrapped { display: block; line-height: 1.35; }

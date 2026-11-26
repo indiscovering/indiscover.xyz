@@ -65,6 +65,19 @@
     duration.textContent = time(latest.duration);
   }
 
+  function adjustWrappedTitle() {
+    const range = document.createRange();
+    range.selectNodeContents(track.querySelector("a") || track);
+    const lines = new Set(Array.from(range.getClientRects(), rect => Math.round(rect.top)));
+    track.classList.toggle("wrapped", lines.size > 1);
+  }
+
+  if (typeof ResizeObserver === "function") {
+    new ResizeObserver(adjustWrappedTitle).observe(track.parentElement);
+  }
+  window.addEventListener("resize", adjustWrappedTitle);
+  document.fonts?.ready.then(adjustWrappedTitle);
+
   function render() {
     const playing = !failed && latest?.status === "playing";
     const paused = !failed && latest?.status === "paused";
@@ -87,6 +100,7 @@
     } else {
       track.textContent = failed || latest?.status === "unavailable" ? "listening activity unavailable" : "no recent tracks";
     }
+    adjustWrappedTitle();
     status.textContent = failed ? (latest?.title ? "last known track / update unavailable" : "will retry automatically") :
       playing ? "● currently listening" : paused ? "Ⅱ paused" :
       latest?.status === "last-played" ? relativeTime(latest.playedAt) :
